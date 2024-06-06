@@ -15,10 +15,6 @@ export default function Links(){
             path:"/appointments"
         },
         {
-            title:"Search",
-            path:"/search"
-        },
-        {
             title:"Login",
             path:"/login"
         }
