@@ -2,6 +2,9 @@ import Links from "./link/Links"
 
 export default function Navbar(){
     return (
-        <Links/>
+        <div className="nav">
+            <Links/>
+        </div>
+        
     )
 }
