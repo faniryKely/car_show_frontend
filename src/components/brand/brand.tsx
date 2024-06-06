@@ -1,6 +1,12 @@
+import "./brand.css"
+import Links from "./link/Links"
+
 export default function Brand(){
-    
+
     return(
-        <p>Brand</p>
+        <div className="brand">
+            <p>Brand</p>
+            <Links/>         
+        </div>     
     )
 }
