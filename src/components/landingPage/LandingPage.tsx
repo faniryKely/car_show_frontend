@@ -1,5 +1,10 @@
+import Brand from '@/components/brand/brand'
 export default function LandingPage(){
     return(
-        <p>Landing Page</p>
+        <>
+        <Brand/>
+        </>
+        
+        
     )
 }
