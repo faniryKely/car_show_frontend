@@ -1,8 +1,11 @@
-import { NextPage } from "next";
-import dynamic from "next/dynamic";
+import Footer from "@/components/footer/Footer";
+import Header from "@/layouts/header/Header";
 
-const AdminApp = dynamic(() => import("@/components/AdminApp"), {ssr: false});
-
-const Home: NextPage = () => <AdminApp />
-
-export default Home;
+export default function Homes(){
+    return (
+        <>
+        <h1>hm</h1>
+        </>
+    
+    )
+}
