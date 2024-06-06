@@ -17,6 +17,10 @@ export default function Links(){
         {
             title:"Login",
             path:"/login"
+        },
+        {
+            title:"Search car",
+            path:"/carSearch"
         }
     ]
     return (
