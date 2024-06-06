@@ -1,4 +1,4 @@
-import "./brand.css"
+import styles from  "./brand.module.css"
 import Links from "./link/Links"
 
 export default function Brand(){

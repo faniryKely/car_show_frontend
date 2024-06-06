@@ -1,4 +1,5 @@
 import Link from "next/link"
+import styles from"../brand.module.css"
 
 export default function Links(){
     const brands = [
@@ -29,7 +30,7 @@ export default function Links(){
 
     ]
     return (
-        <div>
+        <div className={styles.container}>
             {brands.map((link=>(
                 <Link href={link.path} key={link.name}>{link.name}</Link>
             )))}
