@@ -8,44 +8,44 @@ export default function Links(){
         {
             name: "Ford taunus",
             image: taunus,
-            path: "/CAR_SHOW_FRONTEND/public/ford-taunus.png"
+            path: "/cars"
         },
         {
             name: "Mercedes",
             image: taunus,
-            path: "/CAR_SHOW_FRONTEND/public/ford-taunus.png"
+            path: "/cars"
 
         },
         {
             name: "Aston Martin",
             image: taunus,
-            path: "/CAR_SHOW_FRONTEND/public/ford-taunus.png"
+            path: "/cars"
         },
         {
             name: "Nissan",
             image: taunus,
-            path: "/CAR_SHOW_FRONTEND/public/ford-taunus.png"
+            path: "/cars"
         },
         {
             name: "Porshe",
             image: taunus,
-            path: "/CAR_SHOW_FRONTEND/public/ford-taunus.png"
+            path: "/cars"
         },
         {
             name: "Mazda",
             image: taunus,
-            path: "/CAR_SHOW_FRONTEND/public/ford-taunus.png"
+            path: "/cars"
         }
 
     ]
     return (
         <div className={styles.container}>
-            {brands.map((link=>(<div>
-                <Link href={link.path} key={link.name}>{link.name}</Link>
-                <Image src={link.image} alt=""></Image>
-            </div>
-                
-            )))}
+            {brands.map((link)=>(
+                <div key={link.name}>
+                    <Link href={link.path} key={link.name}>{link.name}</Link>
+                    <Image src={link.image} alt=""></Image>
+                </div>
+            ))}
             
         </div>
     )
