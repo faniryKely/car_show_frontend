@@ -26,10 +26,10 @@ const Footer: React.FC = () => {
         <div className="social">
           {socialLinks.map(({ platform, url }) => (
             <a key={platform} href={url} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '70px', height: '70px', borderRadius: '50%' }}>
-              {platform === 'Facebook' ? <FacebookIcon style={{ color: 'white', fontSize: '48px' }} /> : 
-                    platform === 'Instagram' ? <InstagramIcon style={{ color: 'white', fontSize: '48px' }} /> : 
-                    platform === 'Twitter' ? <XIcon style={{ color: 'white', fontSize: '48px' }} /> :
-                    platform === 'LinkedIn' ? <LinkedInIcon style={{ color: 'white', fontSize: '48px'}} /> :
+              {platform === 'Facebook' ? <FacebookIcon style={{ color: 'white', fontSize: '40px' }} /> : 
+                    platform === 'Instagram' ? <InstagramIcon style={{ color: 'white', fontSize: '40px' }} /> : 
+                    platform === 'Twitter' ? <XIcon style={{ color: 'white', fontSize: '40px' }} /> :
+                    platform === 'LinkedIn' ? <LinkedInIcon style={{ color: 'white', fontSize: '40px'}} /> :
                     <i className={`icon ion-social-${platform.toLowerCase().replace(' ', '-')}`}></i>
                 }
             </a>
