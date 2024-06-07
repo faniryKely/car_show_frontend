@@ -10,11 +10,12 @@ import { CreateCar } from "./CreateCar";
 import CustomizeLoginPage from "../app/login/page";
 import { CreateBrand } from "./CreateBrand";
 import { BrandList } from "./BrandList";
+import authProvider from "../components/authprovider/useClientProvider";
 
 const dataProvider = jsonServerProvider("http://localhost:8080");
 
 const AdminApp = () => (
-    <Admin loginPage={CustomizeLoginPage} dataProvider={dataProvider}>
+    <Admin loginPage= {CustomizeLoginPage} dataProvider={dataProvider} authProvider={authProvider}>
         <Resource
             name="user"
             list={UserList}
