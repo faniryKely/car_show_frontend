@@ -56,7 +56,7 @@ const SignUpPage: React.FC = () => {
                         alignItems: 'center'
                     }}
                 >
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                    <Avatar sx={{ m: 1, bgcolor: '#A52A2A' }}>
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
@@ -123,7 +123,10 @@ const SignUpPage: React.FC = () => {
                             sx={{
                                 mt: 3,
                                 mb: 2,
-                                backgroundColor: 'rgba(126, 126, 129, 0.842)'
+                                backgroundColor: '#A52A2A',
+                                '&:hover': {
+                                    backgroundColor: '#B94A3B'
+                                }
                             }}
                         >
                             Sign Up
@@ -133,7 +136,10 @@ const SignUpPage: React.FC = () => {
                         variant="contained"
                         sx={{
                             width: '50%',
-                            backgroundColor: 'rgba(126, 126, 129, 0.842)'
+                            backgroundColor: '#A52A2A',
+                            '&:hover': {
+                                backgroundColor: '#B94A3B'
+                            }
                         }}
                     >
                         <Link
@@ -148,7 +154,7 @@ const SignUpPage: React.FC = () => {
             <Box
                 sx={{
                     ml: 2,
-                    backgroundColor: 'rgba(126, 126, 129, 0.842)',
+                    backgroundColor: '#A52A2A',
                     borderRadius: '80%',
                     height: '45px',
                     width: '45px',
@@ -157,7 +163,10 @@ const SignUpPage: React.FC = () => {
                     right: '30px',
                     bottom: '10%',
                     paddingLeft: '15px',
-                    paddingTop: '10px'
+                    paddingTop: '10px',
+                    '&:hover': {
+                        backgroundColor: '#B94A3B'
+                    }
                 }}
             >
                 <Link
