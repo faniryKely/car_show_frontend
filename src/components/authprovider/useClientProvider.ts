@@ -1,9 +1,7 @@
-
-
 const authProvider = {
     // appeler pour connecter l'utilisateur
     login: async ({ email, password }: { email: string, password: string }) => {
-        const request = new Request('/api/login', {
+        const request = new Request('http://localhost:8080/auth/login', {
             method: 'POST',
             body: JSON.stringify({ email, password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),
@@ -13,22 +11,22 @@ const authProvider = {
             throw new Error(response.statusText);
         }
         const { token } = await response.json();
-        localStorage.setItem('token', token);
+        localStorage.setItem('Bearer', token);
     },
     // appeler pour déconnecter l'utilisateur
     logout: () => {
-        localStorage.removeItem('token');
+        localStorage.removeItem('Bearer');
         return Promise.resolve();
     },
     // appeler lors de chaque requête pour vérifier les permissions
     checkAuth: () => {
-        return localStorage.getItem('token') ? Promise.resolve() : Promise.reject();
+        return localStorage.getItem('Bearer') ? Promise.resolve() : Promise.reject();
     },
     // appeler lors de chaque requête pour vérifier les erreurs d'authentification
     checkError: (error: any) => {
         const status = error.status;
         if (status === 401 || status === 403) {
-            localStorage.removeItem('token');
+            localStorage.removeItem('Bearer');
             return Promise.reject();
         }
         return Promise.resolve();
