@@ -7,11 +7,12 @@ import { AppointmentList } from "./AppointmentList";
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import PanoramaIcon from '@mui/icons-material/Panorama';
 import { CreateCar } from "./CreateCar";
+import CustomizeLoginPage from "../app/login/page";
 
 const dataProvider = jsonServerProvider("http://localhost:8080");
 
 const AdminApp = () => (
-    <Admin dataProvider={dataProvider}>
+    <Admin loginPage= {CustomizeLoginPage} dataProvider={dataProvider}>
         <Resource
             name="user"
             list={UserList}

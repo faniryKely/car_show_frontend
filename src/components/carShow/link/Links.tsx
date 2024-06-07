@@ -1,9 +1,9 @@
-import Link from "next/link"
-import styles from"../carShow.module.css"
-import Image from "next/image"
-import taunus from "../../../../public/ford-taunus.png"
+import Link from "next/link";
+import styles from "../carShow.module.css";
+import Image from "next/image";
+import taunus from "../../../../public/ford-taunus.png";
 
-export default function Links(){
+export default function Links() {
     const brands = [
         {
             name: "Ford taunus",
@@ -46,7 +46,6 @@ export default function Links(){
                     <Image src={link.image} alt=""></Image>
                 </div>
             ))}
-            
         </div>
-    )
+    );
 }

@@ -27,7 +27,7 @@ export default function Links(){
     return (
         <div className={styles.container}>
             {links.map((link=>(
-                <Link href={link.path} key={link.title}>{link.title}</Link>
+                <Link href={link.path} key={link.title} className={styles.title}>{link.title}</Link>
             )))}
         </div>
     )
