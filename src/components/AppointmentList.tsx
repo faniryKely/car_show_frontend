@@ -2,6 +2,7 @@ import { Datagrid, List, SearchInput, TextField } from "react-admin";
 
 export const AppointmentList = () => (
     <List 
+        title="Appointments List"
         sort={ {field: "appointmentDate", order: "ASC"} }
         filters={[
             <SearchInput source="search" alwaysOn />

@@ -4,6 +4,8 @@ import jsonServerProvider from "ra-data-json-server";
 import { UserList } from "./UserList";
 import { CarList } from "./CarList";
 import { AppointmentList } from "./AppointmentList";
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import PanoramaIcon from '@mui/icons-material/Panorama';
 
 const dataProvider = jsonServerProvider("http://localhost:8080");
 
@@ -18,6 +20,7 @@ const AdminApp = () => (
         <Resource
             name="car_show/car"
             list={CarList}
+            icon={DirectionsCarIcon}
             edit={EditGuesser}
             recordRepresentation={"name"}
         />
@@ -37,6 +40,7 @@ const AdminApp = () => (
             name="car_show/image"
             list={ListGuesser}
             edit={EditGuesser}
+            icon={PanoramaIcon}
             recordRepresentation={"url"}
         />
         <Resource

@@ -2,6 +2,7 @@ import { Datagrid, List, SearchInput, TextField } from "react-admin";
 
 export const CarList = () => (
     <List
+        title="Car List"
         filters={[<SearchInput source="search" alwaysOn />]}
     >
         <Datagrid rowClick="edit">
