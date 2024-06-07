@@ -6,6 +6,7 @@ import Home from "./page";
 import Homes from "./page";
 import Footer from "@/components/footer/Footer";
 import Logo from "@/components/logo/Logo";
+import Header from "@/components/header/Header"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,8 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="container">
-          <Logo/>
-          <Navbar/>
+          <Header/>
           {children}
           <Footer/>
         </div>

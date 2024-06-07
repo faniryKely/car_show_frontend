@@ -24,7 +24,7 @@ const SignUpPage: React.FC = () => {
         setSuccess('');
 
         try {
-            const response = await fetch('/api/signup', {
+            const response = await fetch('http://localhost:8080/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
