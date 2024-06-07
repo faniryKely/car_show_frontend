@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from 'next/link';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import axios from 'axios';
 
 const CustomLoginPage: React.FC = () => {
     const [email, setEmail] = useState<string>('');
@@ -22,20 +23,18 @@ const CustomLoginPage: React.FC = () => {
         setError('');
 
         try {
-            const response = await fetch('http://localhost:8080/auth/login', {
+            const response = await axios('http://localhost:8080/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, password }),
+                data: JSON.stringify({ email, password }),
             });
 
-            if (!response.ok) {
+            if (response.status !== 200) {
                 throw new Error('Invalid login credentials');
             }
-
-            
-            const data = await response.json();
+            const data = response.data;
             console.log('Login successful:', data);
             
         } catch (error: any) {
