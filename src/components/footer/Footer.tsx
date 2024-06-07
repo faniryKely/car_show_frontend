@@ -9,8 +9,7 @@ const socialLinks = [
 ];
 
 const footerContent = [
-  { label: 'Home', url: '#' },
-  { label: 'Services', url: '#' },
+  { label: 'Home', url: '/' },
   { label: 'About', url: '#' },
   { label: 'Terms', url: '#' },
   { label: 'Privacy Policy', url: '#' },
