@@ -1,45 +1,46 @@
 'use client';
 import React, { useState } from 'react';
-import { useLogin, useNotify, Notification } from 'react-admin';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import { Typography } from '@mui/material';
+import { Container } from '@mui/material';
 import Link from 'next/link';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { ArrowBackIos as ArrowBackIosIcon } from '@mui/icons-material';
 
-const CustomLoginPage: React.FC = () => {
-    const [email, setEmail] = useState<string>('');
+const SignUpPage: React.FC = () => {
+    const [name, setName] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
     const [error, setError] = useState<string>('');
+    const [success, setSuccess] = useState<string>('');
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setError('');
+        setSuccess('');
 
         try {
-            const response = await fetch('/api/login', {
+            const response = await fetch('/api/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ name, email, password }),
             });
 
             if (!response.ok) {
-                throw new Error('Invalid login credentials');
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Erreur lors de l\'inscription');
             }
 
-            
             const data = await response.json();
-            console.log('Login successful:', data);
-            
+            setSuccess('Inscription réussie ! Vous pouvez maintenant vous connecter.');
         } catch (error: any) {
-            setError(error.message || 'Erreur lors de la connexion : identifiants invalides');
+            setError(error.message || 'Erreur lors de l\'inscription');
         }
     };
 
@@ -59,7 +60,7 @@ const CustomLoginPage: React.FC = () => {
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Login
+                        Sign Up
                     </Typography>
                     <Box
                         component="form"
@@ -72,11 +73,23 @@ const CustomLoginPage: React.FC = () => {
                             margin="normal"
                             required
                             fullWidth
+                            id="name"
+                            label="Name"
+                            name="name"
+                            autoComplete="name"
+                            autoFocus
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
                             id="email"
                             label="Email Address"
                             name="email"
                             autoComplete="email"
-                            autoFocus
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
@@ -93,6 +106,16 @@ const CustomLoginPage: React.FC = () => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
+                        {error && (
+                            <Typography color="error" variant="body2">
+                                {error}
+                            </Typography>
+                        )}
+                        {success && (
+                            <Typography color="success" variant="body2">
+                                {success}
+                            </Typography>
+                        )}
                         <Button
                             type="submit"
                             fullWidth
@@ -103,7 +126,7 @@ const CustomLoginPage: React.FC = () => {
                                 backgroundColor: 'rgba(126, 126, 129, 0.842)'
                             }}
                         >
-                            Login
+                            Sign Up
                         </Button>
                     </Box>
                     <Button
@@ -114,14 +137,13 @@ const CustomLoginPage: React.FC = () => {
                         }}
                     >
                         <Link
-                            href="/signup"
+                            href="/login"
                             style={{ textDecoration: 'none', color: 'white' }}
                         >
-                            Sign Up
+                            Login
                         </Link>
                     </Button>
                 </Box>
-                <Notification />
             </Container>
             <Box
                 sx={{
@@ -152,4 +174,4 @@ const CustomLoginPage: React.FC = () => {
     );
 };
 
-export default CustomLoginPage;
+export default SignUpPage;
