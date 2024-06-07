@@ -1,4 +1,18 @@
 .container{
     display: flex;
     justify-content: space-between;
+    gap: 3rem;
+    padding: 1rem 16rem 1rem 16rem;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    position: fixed;
+    background-color: brown;
+    color:white;
+    font-weight: 700;
+}
+
+.title:hover{
+  transform: scale(1.1);
+  background-color: rgba(247, 243, 243, 0.5);
 }
