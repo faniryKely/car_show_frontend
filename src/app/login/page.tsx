@@ -49,13 +49,13 @@ const CustomLoginPage: React.FC = () => {
                 <CssBaseline />
                 <Box
                     sx={{
-                        marginTop: 8,
+                        marginTop: 18,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center'
                     }}
                 >
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                    <Avatar sx={{ m: 1, bgcolor: '#A52A2A' }}>
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
@@ -79,6 +79,9 @@ const CustomLoginPage: React.FC = () => {
                             autoFocus
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            InputProps={{
+                                style: { cursor: 'text' }
+                            }}
                         />
                         <TextField
                             variant="outlined"
@@ -92,6 +95,9 @@ const CustomLoginPage: React.FC = () => {
                             autoComplete="current-password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            InputProps={{
+                                style: { cursor: 'text' }
+                            }}
                         />
                         <Button
                             type="submit"
@@ -100,7 +106,10 @@ const CustomLoginPage: React.FC = () => {
                             sx={{
                                 mt: 3,
                                 mb: 2,
-                                backgroundColor: 'rgba(126, 126, 129, 0.842)'
+                                backgroundColor: '#A52A2A',
+                                '&:hover': {
+                                    backgroundColor: '#B94A3B'
+                                }
                             }}
                         >
                             Login
@@ -110,7 +119,10 @@ const CustomLoginPage: React.FC = () => {
                         variant="contained"
                         sx={{
                             width: '50%',
-                            backgroundColor: 'rgba(126, 126, 129, 0.842)'
+                            backgroundColor: '#A52A2A',
+                            '&:hover': {
+                                backgroundColor: '#B94A3B'
+                            }
                         }}
                     >
                         <Link
@@ -126,7 +138,7 @@ const CustomLoginPage: React.FC = () => {
             <Box
                 sx={{
                     ml: 2,
-                    backgroundColor: 'rgba(126, 126, 129, 0.842)',
+                    backgroundColor: '#A52A2A',
                     borderRadius: '80%',
                     height: '45px',
                     width: '45px',
