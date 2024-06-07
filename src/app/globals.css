@@ -34,4 +34,6 @@ a{
 
 .nav{
   background-color: var(--nav);
+  display: flex;
+  justify-content: space-between;
 }

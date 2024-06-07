@@ -1,4 +1,5 @@
 import Link from "next/link"
+import styles from "../navbar.module.css"
 
 export default function Links(){
     const links = [
@@ -24,7 +25,7 @@ export default function Links(){
         }
     ]
     return (
-        <div>
+        <div className={styles.container}>
             {links.map((link=>(
                 <Link href={link.path} key={link.title}>{link.title}</Link>
             )))}

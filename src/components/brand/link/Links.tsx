@@ -1,5 +1,5 @@
 import Link from "next/link"
-import styles from"../brand.module.css"
+import styles from"../carShow.module.css"
 
 export default function Links(){
     const brands = [

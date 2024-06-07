@@ -1,5 +1,5 @@
 import styles from  "./brand.module.css"
-import Links from "./link/Links"
+import Links from "../carShow/link/Links"
 
 export default function Brand(){
 
