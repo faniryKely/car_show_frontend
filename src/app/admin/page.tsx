@@ -3,6 +3,6 @@ import dynamic from "next/dynamic";
 
 const AdminApp = dynamic(() => import("@/components/AdminApp"), {ssr: false});
 
-const Admin: NextPage = () => <AdminApp />
+const AdminPage: NextPage = () => <AdminApp />
 
-export default Admin;
+export default AdminPage;
