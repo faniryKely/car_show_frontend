@@ -50,7 +50,7 @@ const SignUpPage: React.FC = () => {
                 <CssBaseline />
                 <Box
                     sx={{
-                        marginTop: 8,
+                        marginTop: 18,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center'
