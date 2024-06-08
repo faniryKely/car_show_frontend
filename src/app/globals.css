@@ -30,7 +30,13 @@ a{
   justify-content: space-between;
 }
 
-header{
+.nav{
+  background-color: var(--nav);
+  display: flex;
+  justify-content: space-between;
+}
+
+header {
   background-color: brown !important;
-  color: #fff !important;
+  color: white !important;
 }
