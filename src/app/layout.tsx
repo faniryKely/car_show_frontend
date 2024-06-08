@@ -7,6 +7,7 @@ import Homes from "./page";
 import Footer from "@/components/footer/Footer";
 import Logo from "@/components/logo/Logo";
 import Header from "@/components/header/Header"
+import LandingPage from "@/components/landingPage/LandingPage";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,11 +25,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="container">
-          <Header/>
+          
           {children}
           <Footer/>
-        </div>
-        
+        </div>       
         </body>
     </html>
   );

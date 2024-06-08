@@ -1,5 +1,7 @@
 import Link from "next/link"
 import styles from"../carShow.module.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 export default function Links(){
     const brands = [
@@ -30,10 +32,12 @@ export default function Links(){
 
     ]
     return (
-        <div className={styles.container}>
-            {brands.map((link=>(
-                <Link href={link.path} key={link.name}>{link.name}</Link>
-            )))}
+        <div>
+            <div className={styles.container}>
+                {brands.map((link=>(
+                    <Link href={link.path} key={link.name}>{link.name}</Link>
+                )))}
+            </div>
         </div>
     )
 }
