@@ -35,16 +35,8 @@ a{
   display: flex;
   justify-content: space-between;
 }
-<<<<<<< HEAD
 
-header {
-  background-color: brown !important;
-  color: white !important;
-}
-
-=======
 header{
   background-color: brown !important;
   color: #fff !important;
 }
->>>>>>> 63719bd67c640d62ea5a448ec8728668f6262e02
