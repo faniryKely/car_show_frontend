@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from 'next/link';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import setAuthHeader from '@/components/setAuthHeader';
 
 const CustomLoginPage: React.FC = () => {
     const [email, setEmail] = useState<string>('');
@@ -36,8 +37,12 @@ const CustomLoginPage: React.FC = () => {
 
             
             const data = await response.json();
+            setAuthHeader(data.token); // Définir l'en-tête d'autorisation
+            localStorage.setItem('token', data.token);
             console.log('Login successful:', data);
-            
+
+            // Rediriger vers la page admin
+            window.location.href = '/admin';
         } catch (error: any) {
             setError(error.message || 'Erreur lors de la connexion : identifiants invalides');
         }
@@ -116,6 +121,7 @@ const CustomLoginPage: React.FC = () => {
                         <Link
                             href="/signup"
                             style={{ textDecoration: 'none', color: 'white' }}
+                            onClick={() => window.location.href = '/signup'}
                         >
                             Sign Up
                         </Link>

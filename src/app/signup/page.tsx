@@ -38,7 +38,9 @@ const SignUpPage: React.FC = () => {
             }
 
             const data = await response.json();
+            localStorage.setItem('token', data.token);
             setSuccess('Inscription réussie ! Vous pouvez maintenant vous connecter.');
+            window.location.href = '/login';
         } catch (error: any) {
             setError(error.message || 'Erreur lors de l\'inscription');
         }
@@ -139,6 +141,7 @@ const SignUpPage: React.FC = () => {
                         <Link
                             href="/login"
                             style={{ textDecoration: 'none', color: 'white' }}
+                            onClick={() => window.location.href = '/login'}
                         >
                             Login
                         </Link>

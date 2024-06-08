@@ -1,22 +1,18 @@
 import { Create, SimpleForm, TextInput, useNotify, useRedirect } from 'react-admin';
 import { useState } from 'react';
+import taunusImage from '../../public/ford-taunus.png';
+import Image from 'next/image';
 
 export const CreateBrand = () => {
-    const [brand, setBrand] = useState({ name: '', logoUrl: '' });
+    const [brand, setBrand] = useState({ name: '', logoUrl: taunusImage }); // Utilisez l'image importée comme valeur initiale
     const notify = useNotify();
     const redirect = useRedirect();
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files.length > 0) {
             const file = event.target.files[0];
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const result = e.target?.result;
-                if (typeof result === 'string') {  // Assurez-vous que result est une chaîne
-                    setBrand(prev => ({ ...prev, logoUrl: result }));
-                }
-            };
-            reader.readAsDataURL(file); // Pour générer une URL utilisable pour l'image
+            const objectUrl = URL.createObjectURL(file); // Crée une URL pour le fichier
+            setBrand(prev => ({ ...prev, logoUrl: objectUrl }));
         }
     };
 
@@ -47,6 +43,7 @@ export const CreateBrand = () => {
             <SimpleForm onSubmit={handleSubmit}>
                 <TextInput source="name" onChange={handleNameChange} />
                 <input type="file" accept="image/*" onChange={handleFileChange} />
+                <Image src={brand.logoUrl} width={100} height={100} alt="Brand Logo" />
             </SimpleForm>
         </Create>
     );

@@ -1,25 +1,17 @@
 import React from 'react';
-import { BooleanField, BooleanInput, Create, NumberField, NumberInput, ReferenceField, ReferenceInput, SimpleForm, TextInput } from "react-admin";
+import { BooleanInput, Create, CreateProps, NumberInput, ReferenceInput, SimpleForm, TextInput } from "react-admin";
 
-export const CreateCar = () => {
+export const CreateCar = (props: CreateProps) => {
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files.length > 0) {
             const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    if (e.target) {
-                        const content = e.target.result;
-                        console.log(content); // Vous pouvez maintenant travailler avec le contenu du fichier
-                    }
-                };
-                reader.readAsText(file); // ou reader.readAsDataURL(file) pour les fichiers binaires comme les images
-            }
+            const objectUrl = URL.createObjectURL(file); // Crée une URL pour le fichier
+            console.log(objectUrl); // Vous pouvez maintenant travailler avec l'URL du fichier
         }
     };
 
     return (
-        <Create>
+        <Create {...props}>
             <SimpleForm>
                 <TextInput source="name" />
                 <TextInput source="model" />
