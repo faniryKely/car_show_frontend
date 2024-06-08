@@ -5,6 +5,7 @@ import styles from "../carShow.module.css";
 import Image from "next/image";
 import taunus from "../../../../public/ford-taunus.png";
 import mercedes from "../../../../public/mercedes-benz-300sl.jpg"
+import porshe from "../../../../public/porshe-911-turbo.jpg"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect } from "react";
 
@@ -34,8 +35,8 @@ export default function Links() {
     },
     {
       name: "Porsche",
-      image: taunus,
-      path: "/CAR_SHOW_FRONTEND/public/ford-taunus.png",
+      image: porshe,
+      path: "/CAR_SHOW_FRONTEND/public/porshe-911-turbo.jpg",
     },
     {
       name: "Mazda",
