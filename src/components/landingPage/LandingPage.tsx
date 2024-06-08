@@ -8,7 +8,7 @@ export default function LandingPage(){
         <div className='landingPage'>
             <Header />
             <div className='body'>
-                <h1>Welcome to the world of motorcycles</h1>
+                <CarShow/>
             </div>
         </div>
         </>     

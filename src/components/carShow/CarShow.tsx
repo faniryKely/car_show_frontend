@@ -1,7 +1,7 @@
+import Links from "./link/Links";
+
 export default function CarShow(){
     return (
-        <div className="carShow">
-            <p>Car show</p>
-        </div>
+        <Links/>
     )
 }
