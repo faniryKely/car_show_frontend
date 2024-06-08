@@ -8,6 +8,7 @@ import { error } from "console";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Header from "@/components/header/Header";
+import styles from "./cars.module.css";
 
 type Car = {
     name: string,
@@ -32,15 +33,23 @@ export default function Car(){
     const [carList, setCarList] = useState<Car[]>([])
 
     useEffect(() => {
-        const response = await axios.get("http://localhost8080/car_show/car")
-        setCarList(response.data)
-    })
+        const fetchCars = async () => {
+            try {
+                const response = await axios.get("http://localhost:8080/car_show/car");
+                setCarList(response.data);
+            } catch (error) {
+                console.error("Error fetching car data:", error);
+            }
+        };
+
+        fetchCars();
+    }, []);
     return (
-        <div>
+        <div className="container card">
             <Header/>
            {carList.map((car=>(
             <div>
-                <Image src={car.images.url} alt=""></Image>
+                <Image className="carPicture" src={car.images.url} alt=""></Image>
                 <p>{car.model}</p>
             </div>
            )))}
