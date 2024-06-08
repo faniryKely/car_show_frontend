@@ -1,9 +1,13 @@
 import React from 'react';
 import './footer.css';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import XIcon from '@mui/icons-material/X';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const socialLinks = [
   { platform: 'Instagram', url: '#' },
-  { platform: 'Snapchat', url: '#' },
+  { platform: 'LinkedIn', url: '#' },
   { platform: 'Twitter', url: '#' },
   { platform: 'Facebook', url: '#' },
 ];
@@ -21,8 +25,13 @@ const Footer: React.FC = () => {
       <footer>
         <div className="social">
           {socialLinks.map(({ platform, url }) => (
-            <a key={platform} href={url}>
-              <i className={`icon ion-social-${platform.toLowerCase().replace(' ', '-')}`}></i>
+            <a key={platform} href={url} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '70px', height: '70px', borderRadius: '50%' }}>
+              {platform === 'Facebook' ? <FacebookIcon style={{ color: 'white', fontSize: '40px' }} /> : 
+                    platform === 'Instagram' ? <InstagramIcon style={{ color: 'white', fontSize: '40px' }} /> : 
+                    platform === 'Twitter' ? <XIcon style={{ color: 'white', fontSize: '40px' }} /> :
+                    platform === 'LinkedIn' ? <LinkedInIcon style={{ color: 'white', fontSize: '40px'}} /> :
+                    <i className={`icon ion-social-${platform.toLowerCase().replace(' ', '-')}`}></i>
+                }
             </a>
           ))}
         </div>

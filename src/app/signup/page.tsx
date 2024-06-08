@@ -10,6 +10,7 @@ import { Typography } from '@mui/material';
 import { Container } from '@mui/material';
 import Link from 'next/link';
 import { ArrowBackIos as ArrowBackIosIcon } from '@mui/icons-material';
+import axios from 'axios';
 
 const SignUpPage: React.FC = () => {
     const [name, setName] = useState<string>('');
@@ -24,19 +25,17 @@ const SignUpPage: React.FC = () => {
         setSuccess('');
 
         try {
-            const response = await fetch('http://localhost:8080/auth/register', {
+            const response = await axios('http://localhost:8080/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ name, email, password }),
+                data: JSON.stringify({ name, email, password }),
             });
-
-            if (!response.ok) {
-                const errorData = await response.json();
+            if (response.status !== 200) {
+                const errorData = response.data;
                 throw new Error(errorData.message || 'Erreur lors de l\'inscription');
             }
-
             const data = await response.json();
             localStorage.setItem('token', data.token);
             setSuccess('Inscription réussie ! Vous pouvez maintenant vous connecter.');
