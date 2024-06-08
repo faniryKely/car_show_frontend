@@ -1,6 +1,7 @@
 .container{
-    width: 100%;
+    width: 100vw;
     display: flex;
+    height: 10vh;
     gap: 3rem;
     padding: 1rem 25rem 1rem 22rem;
     justify-content: center;
@@ -8,7 +9,8 @@
     align-items: center;
     background-color: brown;
     color:white;
-    font-weight: 700;
+    font-weight: 900;
+   
 }
 
 .title{
@@ -16,6 +18,5 @@
 }
 
 .title:hover{
-  transform: scale(1.1);
-  background-color: rgba(247, 243, 243, 0.5);
+  transform: scale(1.2);
 }
