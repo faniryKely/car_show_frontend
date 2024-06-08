@@ -30,12 +30,6 @@ a{
   justify-content: space-between;
 }
 
-.nav{
-  background-color: var(--nav);
-  display: flex;
-  justify-content: space-between;
-}
-
 header{
   background-color: brown !important;
   color: #fff !important;
