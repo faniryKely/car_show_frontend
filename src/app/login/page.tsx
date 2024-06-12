@@ -37,7 +37,7 @@ const CustomLoginPage: React.FC = () => {
             }
 
             
-            const data = await response.json();
+            const data = await response.data;
             setAuthHeader(data.token); // Définir l'en-tête d'autorisation
             localStorage.setItem('token', data.token);
             console.log('Login successful:', data);
