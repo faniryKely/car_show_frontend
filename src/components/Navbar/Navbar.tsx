@@ -14,19 +14,19 @@ const Navbar = () => {
         <Typography variant='h6' component="div" sx={{ flexGrow : 0.5,  fontSize: 30, fontWeight: 'bold', display: {xs: 'none', md: 'flex'}}}>Rasseta Car</Typography>
         <Box sx={{display: {xs: 'none', md: 'flex'}}}>
             <Link href="/">
-                <Button sx={{ fontWeight: 'bold'}} color='inherit'>Home</Button>
+                <Button className='button' sx={{ fontWeight: 'bold'}} >Home</Button>
             </Link>
             <Link href="/appointments">
-                <Button sx={{ fontWeight: 'bold'}} color='inherit'>Appointments</Button>
+                <Button className='button' sx={{ fontWeight: 'bold'}} >Appointments</Button>
             </Link>
             <Link href="/Cars">
-                <Button sx={{ fontWeight: 'bold'}} color='inherit'>Cars</Button>
+                <Button  className='button' sx={{ fontWeight: 'bold'}} >Cars</Button>
             </Link>
             <Link href="CarSearch">
-                <Button sx={{ fontWeight: 'bold'}} color='inherit'>Car Search</Button>  
+                <Button className='button' sx={{ fontWeight: 'bold'}} >Car Search</Button>  
             </Link>
             <Link href="/login" >
-                <Button  sx={{ fontWeight: 'bold', textDecorationColor:'inherit' }}>Login</Button>
+                <Button  className='button' sx={{ fontWeight: 'bold'}}>Login</Button>
             </Link>
               
         </Box>
