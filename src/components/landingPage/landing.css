@@ -1,4 +1,12 @@
-.landing-page {
-    /* background-image: url('../../../public/porshe-911-turbo.jpg'); */
-    background-color: aquamarine;
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-image: url('../../../public/Assets/milay2.avif'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+   
 }
