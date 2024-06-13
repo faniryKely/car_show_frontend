@@ -1,0 +1,8 @@
+.container {
+    background-image: url('../../../public/Assets/milay2.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-position: fixed;
+    
+}

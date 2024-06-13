@@ -1,3 +1,11 @@
 .button {
     color: white;
 }
+.nav {
+    background-color: transparent;
+    box-shadow: none;
+
+}
+.box {
+    gap : 15px
+}

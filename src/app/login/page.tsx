@@ -10,6 +10,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from 'next/link';
+import './login.css'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import setAuthHeader from '@/components/setAuthHeader';
 import axios from 'axios';
@@ -50,8 +51,10 @@ const CustomLoginPage: React.FC = () => {
     };
 
     return (
-        <div>
-            <Container component="main" maxWidth="xs">
+       <>
+        <div className='container'>
+         <div className='login' >
+            <Container component="main" maxWidth="xs" >
                 <CssBaseline />
                 <Box
                     sx={{
@@ -168,6 +171,8 @@ const CustomLoginPage: React.FC = () => {
                 </Link>
             </Box>
         </div>
+    </div>
+       </>
     );
 };
 
