@@ -1,4 +1,7 @@
-"use client";
+
+
+"use client"
+import { Typography, Box, Grid,  TextField, Button, IconButton } from '@mui/material'
 
 import React, { useState } from 'react';
 import { Typography, Box, Grid, TextField, Button } from '@mui/material';
@@ -184,9 +187,11 @@ const Appointments: React.FC = () => {
                         </Link>
                     </Box>
                 </Box>
+
             </Box>
         </Grid>
     );
 };
 
 export default Appointments;
+

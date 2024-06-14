@@ -1,58 +1,48 @@
 "use client"
 
-import { CarList } from "@/components/CarList";
-import CarInfo from "@/components/carInfo/CarInfo";
-import axios from "axios";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { error } from "console";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import Header from "@/components/header/Header";
-import styles from "./cars.module.css";
+import axios from 'axios';
+import Image from 'next/image';
+import Link from 'next/link';
+import {Car} from "@/components/Interface"
+import { GetServerSideProps } from 'next';
+import { useEffect, useState } from 'react';
 
-type Car = {
-    name: string,
-    model: string,
-    price: number,
-    color: string,
-    power: number,
-    placeNumber: number,
-    images: {
-        imageId: number,
-        url: string
-    },
-    brand: {
-        brandId: number, name: string
-    },
-    carTypes: {carTypeId: number, name: string},
-    motorTypes: {motorTypeId: number, name: string}
-} 
-  
+interface CardProps {
+    cars : Car[];
+}
 
-export default function Car(){
-    const [carList, setCarList] = useState<Car[]>([])
+const CarCard: React.FC<CardProps> = () => {
+
+    const [cars, setCars] = useState<Car[]>([]);
 
     useEffect(() => {
         const fetchCars = async () => {
-            try {
-                const response = await axios.get("http://localhost:8080/car_show/car");
-                setCarList(response.data);
-            } catch (error) {
-                console.error("Error fetching car data:", error);
-            }
-        };
-
+            const response = await axios.get('http://localhost:8080/car_show/car');
+            const cars : Car[] = response.data;
+            setCars(cars);
+        }
         fetchCars();
     }, []);
+    
     return (
-        <div className="container card">
-            <Header/>
-           {carList.map((car=>(
-            <div>
-                <Image className="carPicture" src={car.images.url} alt=""></Image>
-                <p>{car.model}</p>
-            </div>
-           )))}
+        <div>
+            {cars.map((car) => (
+                <div key={car.carId} className="card" style={{ width: '18rem' }}>
+                    {car.images.length > 0 && (
+                        <Image src={car.images[0].url} className="card-img-top" alt={car.name} width={288} height={162} />
+                    )}
+                    <div className="card-body">
+                        <h5 className="card-title">{car.name}</h5>
+                        <p className="card-text">Model: {car.model}</p>
+                        <p className="card-text">Price: ${car.price}</p>
+                        <Link href={`/cars/${car.carId}`}>
+                            <p className="btn btn-primary">View Details</p>
+                        </Link>
+                    </div>
+                </div>
+            ))}
         </div>
-    )
-}
+    );
+};
+
+export default CarCard;

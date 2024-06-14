@@ -1,49 +1,85 @@
-import { useState, useEffect } from "react";
+"use client"
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+type CarSearchParam = {
+    brandId: string;
+    model: string;
+    minPrice: number;
+    maxPrice: number;
+}
+
+type Car = {
+    name: string;
+    model: string;
+    price: number;
+}
 
 export default function CarSearch() {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
-    const [cars, setCars] = useState([]);
+    const [cars, setCars] = useState<Car[]>([]);
+    const [options, setOptions] = useState<{ brands: string[], models: string[] }>({ brands: [], models: [] });
+    
+    const { register, handleSubmit } = useForm<CarSearchParam>();
 
-    // Debounce search term so that it only updates after a delay
-    useEffect(() => {
-        const timerId = setTimeout(() => {
-            setDebouncedSearchTerm(searchTerm);
-        }, 300); // 300ms delay
-
-        return () => {
-            clearTimeout(timerId);
-        };
-    }, [searchTerm]);
-
-    // Fetch cars from the API when debouncedSearchTerm changes
-    useEffect(() => {
-        async function fetchCars() {
-            const response = await fetch(`/car_show/car?name=${debouncedSearchTerm}&model=${debouncedSearchTerm}`);
-            const data = await response.json();
-            setCars(data);
+    const onSubmit: SubmitHandler<CarSearchParam> = async (data) => {
+        try {
+            const response = await axios.get("http://localhost:8080/car_show/car", {
+                params: {
+                    brandId: data.brandId,
+                    model: data.model,
+                    minCost: data.minPrice,
+                    maxCost: data.maxPrice
+                }
+            });
+            setCars(response.data.map((car: Car) => ({
+                name: car.name,
+                model: car.model,
+                price: car.price
+            })));
+        } catch (error) {
+            console.error("Failed to fetch cars:", error);
         }
+    };
 
-        if (debouncedSearchTerm) {
-            fetchCars();
-        } else {
-            setCars([]); // Clear cars when search term is cleared
+    useEffect(() => {
+        async function fetchOptions() {
+            try {
+                const brandResponse = await axios.get("http://localhost:8080/car_show/brand");
+                const modelResponse = await axios.get("http://localhost:8080/car_show/model");
+                setOptions({
+                    brands: brandResponse.data.map((brand: { id: string, name: string }) => brand.name),
+                    models: modelResponse.data.map((model: { id: string, name: string }) => model.name)
+                });
+            } catch (error) {
+                console.error("Failed to fetch options:", error);
+            }
         }
-    }, [debouncedSearchTerm]);
+        fetchOptions();
+    }, []);
 
     return (
         <div>
-            <input
-                type="text"
-                placeholder="Recherche par marque ou modèle"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <ul>
-                {cars.map(car => (
-                    <li key={car.carId}>{car.name} - {car.model}</li>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <select {...register("brandId")}>
+                    {options.brands.map((brand) => (
+                        <option key={brand} value={brand}>{brand}</option>
+                    ))}
+                </select>
+                <select {...register("model")}>
+                    {options.models.map((model) => (
+                        <option key={model} value={model}>{model}</option>
+                    ))}
+                </select>
+                <input type="number" {...register("minPrice")} />
+                <input type="number" {...register("maxPrice")} />
+                <button type="submit">Rechercher</button>
+            </form>
+            <div>
+                {cars.map((car) => (
+                    <div key={car.name}>{car.name} {car.model} {car.price}</div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }
