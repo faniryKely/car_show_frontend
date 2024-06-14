@@ -38,21 +38,41 @@ const Appointments: React.FC = () => {
         },
     });
 
+    function formatDateToLocalDate(date: Date) {
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, '0');
+        
+        return `${year}-${month}-${day}`;
+    }
+
     const onSubmit =  async (data: FormData) => {
+        
         try {
-            const response = await fetch('http://localhost:8080/car_show/appointment', {
+            /*
+            const response = await fetch('http://localhost:8080/appointment', {
                 method : 'POST' ,
                 headers : {
                     'Content-type' : 'application/json',
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify({
+                    ...data,
+                    appointmentDate: formatDateToLocalDate(data.appointmentDate),
+                }),
             });
+            */
+            const response = await axios.post('http://localhost:8080/appointment', {
+                ...data,
+                appointmentDate: formatDateToLocalDate(data.appointmentDate),
+            });
+
+            console.log(formatDateToLocalDate(data.appointmentDate));
             
-            if(!response.ok) {
+            if(!response.status === 200) {
                 throw new Error('Network response was not ok');
             }
             
-            const result = await response.json();
+            const result = await response.data;
             console.log('succes : ', result);
             reset();
         } 

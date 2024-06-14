@@ -6,6 +6,7 @@ export const BrandList = () => (
         filters={[<SearchInput key="searchInput" source="search" alwaysOn />]}
     >
         <Datagrid rowClick="edit">
+            <TextField source="id" />
             <TextField source="name" />
             <TextField source="logoUrl" />
         </Datagrid>

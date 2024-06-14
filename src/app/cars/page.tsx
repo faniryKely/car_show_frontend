@@ -17,7 +17,7 @@ const CarCard: React.FC<CardProps> = () => {
 
     useEffect(() => {
         const fetchCars = async () => {
-            const response = await axios.get('http://localhost:8080/car_show/car');
+            const response = await axios.get('http://localhost:8080/car');
             const cars : Car[] = response.data;
             setCars(cars);
         }

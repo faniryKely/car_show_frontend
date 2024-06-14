@@ -1,7 +1,5 @@
 "use client";
 import { Admin, Resource, ListGuesser, EditGuesser, Create } from "react-admin";
-import { fetchUtils, DataProvider } from 'react-admin';
-import jsonServerProvider from 'ra-data-json-server';
 import { UserList } from "./UserList";
 import { CarList } from "./CarList";
 import { AppointmentList } from "./AppointmentList";
@@ -25,7 +23,7 @@ const AdminApp = () => (
             recordRepresentation={"email"}
         />
         <Resource
-            name="car_show/car"
+            name="car"
             list={CarList}
             icon={DirectionsCarIcon}
             edit={EditGuesser}
@@ -33,21 +31,21 @@ const AdminApp = () => (
             recordRepresentation={"name"}
         />
         <Resource
-            name="car_show/brand"
+            name="brand"
             list={BrandList}
             edit={EditGuesser}
             create={CreateBrand}
             recordRepresentation={"name"}
         />
         <Resource
-            name="car_show/appointment"
+            name="appointment"
             list={AppointmentList}
             edit={EditGuesser}
             create={Create}
             recordRepresentation={"email"}
         />
         <Resource
-            name="car_show/image"
+            name="image"
             list={ListGuesser}
             edit={EditGuesser}
             create={Create}
@@ -55,14 +53,14 @@ const AdminApp = () => (
             recordRepresentation={"url"}
         />
         <Resource
-            name="car_show/carType"
+            name="carType"
             list={ListGuesser}
             edit={EditGuesser}
             create={Create}
             recordRepresentation={"name"}
         />
         <Resource
-            name="car_show/motorType"
+            name="motorType"
             list={ListGuesser}
             edit={EditGuesser}
             create={Create}
