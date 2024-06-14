@@ -1,0 +1,15 @@
+.appointment {
+    background-image: url('../../../public/Assets/milay-fotor-2024061413538.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    position: fixed;
+    
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
