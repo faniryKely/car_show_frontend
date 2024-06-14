@@ -1,5 +1,6 @@
 import { Appointment } from '@/types/Appointment';
 import { Brand } from '@/types/Brand';
+import { Car } from '@/types/Car';
 import { CarType } from '@/types/CarType';
 import { Images } from '@/types/Images';
 import { MotorType } from '@/types/MotorType';
