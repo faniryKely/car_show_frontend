@@ -1,7 +1,4 @@
-
-
 "use client"
-import { Typography, Box, Grid,  TextField, Button, IconButton } from '@mui/material'
 
 import React, { useState } from 'react';
 import { Typography, Box, Grid, TextField, Button } from '@mui/material';
@@ -12,6 +9,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import './appointment.css';
+import axios from 'axios';
 
 
 const schema = z.object({
@@ -28,7 +26,7 @@ type FormData = z.infer<typeof schema>;
 const Appointments: React.FC = () => {
     const [appointmentDate, setAppointmentDate] = useState<Date | null>(new Date());
 
-    const { control, handleSubmit, formState: { errors } } = useForm<FormData>({
+    const { control, handleSubmit, formState: { errors } , reset } = useForm<FormData>({
         resolver: zodResolver(schema),
         defaultValues: {
             name: '',
@@ -40,9 +38,30 @@ const Appointments: React.FC = () => {
         },
     });
 
-    const onSubmit = (data: FormData) => {
-        console.log(data);
+    const onSubmit =  async (data: FormData) => {
+        try {
+            const response = await fetch('http://localhost:8080/car_show/appointment', {
+                method : 'POST' ,
+                headers : {
+                    'Content-type' : 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            
+            if(!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            
+            const result = await response.json();
+            console.log('succes : ', result);
+            reset();
+        } 
+        catch (error) {
+            console.error('it was a fetch error : ', error)
+        }
     };
+
+    
 
     return (
         <Grid className='appointment' container justifyContent="center" alignItems="center" style={{ height: '100vh' }}>
