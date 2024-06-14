@@ -9,10 +9,6 @@ const httpClient = fetchUtils.fetchJson;
 export const dataProvider: DataProvider = {
 
     getList: async (resource, params) => {
-        console.log(resource);
-        if (resource.includes("brand")) {
-            resource = "brand";
-        }
         const response = await axios.get(`${apiUrl}/${resource}`);
 
         if (resource.includes("user")) {

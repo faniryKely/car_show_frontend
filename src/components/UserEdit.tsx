@@ -7,7 +7,7 @@ export const UserEdit = () => (
             <TextInput source="name" />
             <TextInput source="email" />
             <TextInput source="password" />
-            <ReferenceInput source="role.roleId" reference="car_show/role" />
+            <ReferenceInput source="role.roleId" reference="role" />
             <TextInput source="username" />
             <ArrayInput source="authorities"><SimpleFormIterator><TextInput source="authority" /></SimpleFormIterator></ArrayInput>
             <BooleanInput source="accountNonExpired" />

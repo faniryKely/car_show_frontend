@@ -24,7 +24,7 @@ export default function CarSearch() {
 
     const onSubmit: SubmitHandler<CarSearchParam> = async (data) => {
         try {
-            const response = await axios.get("http://localhost:8080/car_show/car", {
+            const response = await axios.get("http://localhost:8080/car", {
                 params: {
                     brandId: data.brandId,
                     model: data.model,
@@ -45,8 +45,8 @@ export default function CarSearch() {
     useEffect(() => {
         async function fetchOptions() {
             try {
-                const brandResponse = await axios.get("http://localhost:8080/car_show/brand");
-                const modelResponse = await axios.get("http://localhost:8080/car_show/model");
+                const brandResponse = await axios.get("http://localhost:8080/brand");
+                const modelResponse = await axios.get("http://localhost:8080/model");
                 setOptions({
                     brands: brandResponse.data.map((brand: { id: string, name: string }) => brand.name),
                     models: modelResponse.data.map((model: { id: string, name: string }) => model.name)

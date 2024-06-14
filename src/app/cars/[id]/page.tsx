@@ -1,24 +1,23 @@
 'use client'
 
-import { GetServerSideProps } from "next";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { Car } from '@/components/Interface';
 import { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { usePathname, useRouter } from "next/navigation";
 
-interface CarDetailsProps {
-    car : Car;
-}
-
-const CarDetails : React.FC<CarDetailsProps> = ({car}) => {
+const CarDetails : React.FC = () => {
 
     const [carsDetail, setCarDetail] = useState<Car>();
+    const router = useRouter();
+    const pathname = usePathname();
 
     useEffect(() => {
         const fetchCarDetail = async () => {
-            const response = await axios.get('http://localhost:8080/car');
+            let id = pathname.substring(6);
+            const response = await axios.get(`http://localhost:8080/car/${id}`);
             const cars : Car = response.data;
             setCarDetail(cars);
         }
@@ -27,20 +26,20 @@ const CarDetails : React.FC<CarDetailsProps> = ({car}) => {
 
     return (
         <div className="card" style={{ width: '18rem' }}>
-            {car.images.length > 0 && (
-                <Image src={car.images[0].url} className="card-img-top" alt={car.name} width={288} height={162} />
+            {carsDetail && carsDetail.images.length > 0 && (
+                <Image src={carsDetail.images[0].url} className="card-img-top" alt={carsDetail.name} width={288} height={162} />
             )}
             <div className="card-body">
-                <h5 className="card-title">{car.name}</h5>
-                <p className="card-text">Model: {car.model}</p>
-                <p className="card-text">Price: ${car.price}</p>
-                <p className="card-text">Color: {car.color}</p>
-                <p className="card-text">Power: {car.power} HP</p>
-                <p className="card-text">Seats: {car.placeNumber}</p>
-                <p className="card-text">Status: {car.status ? 'Available' : 'Unavailable'}</p>
-                {car.images.map((image) => (
+                <h5 className="card-title">{carsDetail?.name}</h5>
+                <p className="card-text">Model: {carsDetail?.model}</p>
+                <p className="card-text">Price: ${carsDetail?.price}</p>
+                <p className="card-text">Color: {carsDetail?.color}</p>
+                <p className="card-text">Power: {carsDetail?.power} HP</p>
+                <p className="card-text">Seats: {carsDetail?.placeNumber}</p>
+                <p className="card-text">Status: {carsDetail?.status ? 'Available' : 'Unavailable'}</p>
+                {carsDetail?.images.map((image) => (
                     <div key={image.imageId}>
-                        <Image src={image.url} alt={car.name} width={288} height={162} />
+                        <Image src={image.url} alt={carsDetail?.name} width={288} height={162} />
                     </div>
                 ))}
                 <Link href="/">

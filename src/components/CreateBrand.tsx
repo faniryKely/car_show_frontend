@@ -23,7 +23,7 @@ export const CreateBrand = () => {
 
     const handleSubmit = async () => {
         try {
-            const response = await fetch('http://localhost:8080/car_show/brand', {
+            const response = await fetch('http://localhost:8080/brand', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ export const CreateBrand = () => {
             });
             if (!response.ok) throw new Error('Something went wrong');
             notify('Brand created successfully', { type: 'info' });
-            redirect('/admin#/car_show/brand');
+            redirect('/admin#/brand');
         } catch (error) {
             notify('Error: ' + (error as Error).message, { type: 'warning' });
         }

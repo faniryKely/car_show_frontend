@@ -29,7 +29,7 @@ export default function CarInfo() {
     const [cars, setCars] = useState<Car[]>([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/car_show/car')
+        axios.get('http://localhost:8080/car')
             .then(response => {
                 setCars(response.data);
             })
