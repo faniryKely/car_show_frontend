@@ -4,6 +4,7 @@
 .nav {
     background-color: transparent;
     box-shadow: none;
+    backdrop-filter: sepia(98%);
 
 }
 .box {
