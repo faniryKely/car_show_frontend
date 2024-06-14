@@ -1,9 +1,13 @@
 .container {
-   
+    
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-position: sticky;
     box-shadow: 4px;
     
+}
+
+body{
+    background-image: url('../../../public/Assets/landing-page-image.jpg'); 
 }

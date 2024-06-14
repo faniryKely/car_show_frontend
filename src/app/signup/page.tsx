@@ -9,6 +9,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Typography } from '@mui/material';
 import { Container } from '@mui/material';
 import Link from 'next/link';
+import '../login/login.css'
 import { ArrowBackIos as ArrowBackIosIcon } from '@mui/icons-material';
 import axios from 'axios';
 
@@ -51,11 +52,13 @@ const SignUpPage: React.FC = () => {
                 <CssBaseline />
                 <Box
                     sx={{
-                        marginTop: 8,
+                        marginTop: 18,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
-                        backgroundImage : 'url("../../../public/Assets/milay-fotor-2024061413538.png")'
+                        backgroundColor: 'rgba(210, 210, 180, 0.8)', 
+                        padding: '40px',
+                        borderRadius: '15px'
                     }}
                 >
                     <Avatar sx={{ m: 1, bgcolor: '#A52A2A' }}>
