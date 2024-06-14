@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Car } from '@/components/Interface';
 import { useEffect, useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 interface CarDetailsProps {
     car : Car;
