@@ -1,3 +1,9 @@
+import { Appointment } from '@/types/Appointment';
+import { Brand } from '@/types/Brand';
+import { CarType } from '@/types/CarType';
+import { Images } from '@/types/Images';
+import { MotorType } from '@/types/MotorType';
+import { Role } from '@/types/RoleType';
 import { User } from '@/types/UserType';
 import axios from 'axios';
 import { DataProvider, fetchUtils } from 'react-admin';
@@ -415,6 +421,7 @@ export const dataProvider: DataProvider = {
     },
 
     update: async (resource, params) => {
+        // update user
        if (resource.includes("user")) {
             let user: User = {
                 userId: 0,
@@ -439,13 +446,125 @@ export const dataProvider: DataProvider = {
                 data: params.data,
             };
        }
-       const { json } = await httpClient(`${apiUrl}/${resource}/${params.id}`, {
-            method: 'PUT',
-            body: JSON.stringify(params.data),
-        });
+       // update role
+       if(resource.includes("role")) {
+            let role : Role = {
+                roleId : 0,
+                roleName : ''
+            }
+            role.roleId = params.id;
+            role.roleName = params.data.roleName;
+            const response = await axios.put(`${apiUrl}/${resource}/${params.id}`, role);
+            role = response.data;
+            return {
+                data : params.data
+            };
+       }
+       // update brand
+       if(resource.includes("brand")) {
+           let brand : Brand = {
+               brandId : 0,
+               name : '',
+               logoUrl : ''
+           }
+           brand.brandId = params.id;
+           brand.name = params.data.name;
+           brand.logoUrl = params.data.logoUrl
+           const response = await axios.put(`${apiUrl}/${resource}/${params.id}`, brand);
+           brand = response.data;
+           return {
+              data : params.data
+           }
+       }
+       // update motor
+       if(resource.includes("Motor")) {
+         let motor : MotorType = {
+            motorTypeId : 0,
+            name : ''
+         }
+         motor.motorTypeId = params.id;
+         motor.name = params.data.name;
+         const response = await axios.put(`${apiUrl}/${resource}/${params.id}`, motor);
+         motor = response.data;
+         return {
+            data : params.data
+         }
+       }
+
+       // update CarType
+       if(resource.includes("CarType")) {
+        let carType : CarType = {
+           carTypeId : 0,
+           name : ''
+        }
+        carType.carTypeId = params.id;
+        carType.name = params.data.name;
+        const response = await axios.put(`${apiUrl}/${resource}/${params.id}`, carType);
+        carType = response.data;
         return {
-                data: json,
+           data : params.data
+        }
+      }
+
+      //update Appointment
+      if(resource.includes("Appointment")) {
+        let appointment: Appointment = {
+            appointmentId: params.id,
+            name: params.data.name,
+            firstName: params.data.firstName,
+            email: params.data.email,
+            message: params.data.message,
+            contact: params.data.contact,
+            appointmentDate: params.data.appointmentDate,
+            status: params.data.status,
+            car: params.data.car,
         };
+        const response = await axios.put(`${apiUrl}/${resource}/${params.id}`, appointment);
+        appointment = response.data;
+        return {
+            data: params.data
+        };
+      }
+
+      // update Image
+      if (resource.includes("Image")) {
+        let image: Images = {
+            imageId: params.id,
+            url: params.data.url,
+            car: params.data.car,
+            brand: params.data.brand,
+        };
+        const response = await axios.put(`${apiUrl}/${resource}/${params.id}`, image);
+        image = response.data;
+        return {
+            data: params.data
+        };
+      }
+      
+      // update Car
+      if (resource.includes("Car")) {
+        let car: Car = {
+            carId: params.id,
+            name: params.data.name,
+            model: params.data.model,
+            price: params.data.price,
+            color: params.data.color,
+            power: params.data.power,
+            placeNumber: params.data.placeNumber,
+            status: params.data.status,
+            images: params.data.images,
+            brand: params.data.brand,
+            carType: params.data.carType,
+            motorType: params.data.motorType,
+        };
+        const response = await axios.put(`${apiUrl}/${resource}/${params.id}`, car);
+        car = response.data;
+        return {
+            data: params.data
+        };
+      }
+      
+     
     },
 
     updateMany: async (resource, params) => {
