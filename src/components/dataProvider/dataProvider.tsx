@@ -1,3 +1,4 @@
+import { Role } from '@/types/RoleType';
 import { User } from '@/types/UserType';
 import axios from 'axios';
 import { DataProvider, fetchUtils } from 'react-admin';
@@ -443,6 +444,19 @@ export const dataProvider: DataProvider = {
                 data: params.data,
             };
        }
+       if(resource.includes("role")) {
+            let role : Role = {
+                roleId : 0,
+                roleName : ''
+            }
+            role.roleId = params.id;
+            role.roleName = params.data.roleName;
+            const response = await axios.put(`${apiUrl}/${resource}/${params.id}`, role);
+            role = response.data;
+            return {
+                data : params.data
+            }
+       }
        const { json } = await httpClient(`${apiUrl}/${resource}/${params.id}`, {
             method: 'PUT',
             body: JSON.stringify(params.data),
@@ -450,6 +464,7 @@ export const dataProvider: DataProvider = {
         return {
                 data: json,
         };
+
     },
 
     updateMany: async (resource, params) => {
