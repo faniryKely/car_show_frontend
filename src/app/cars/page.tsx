@@ -31,7 +31,7 @@ const CarCard: React.FC<CardProps> = ({ cars }) => {
 };
 
 export const getServersideProps: GetServerSideProps = async () => {
-    const response = await axios.get('http://localhost:8080/api/cars');
+    const response = await axios.get('http://localhost:8080/car_show/car');
     const cars : Car[] = response.data; 
 
     return{

@@ -20,7 +20,7 @@ const Navbar = () => {
             <Link href="/appointments">
                 <Button className='button' sx={{ fontWeight: 'bold', ':hover': { backgroundColor: 'white', color : 'black' }}} >Appointments</Button>
             </Link>
-            <Link href="/Cars">
+            <Link href="/cars">
                 <Button  className='button' sx={{ fontWeight: 'bold', ':hover': { backgroundColor: 'white', color : 'black' } }} >Cars</Button>
             </Link>
             <Link href="CarSearch">
