@@ -1,14 +1,29 @@
+'use client'
+
 import { GetServerSideProps } from "next";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { Car } from '@/components/Interface';
+import { useEffect, useState } from "react";
 
 interface CarDetailsProps {
     car : Car;
 }
 
 const CarDetails : React.FC<CarDetailsProps> = ({car}) => {
+
+    const [carsDetail, setCarDetail] = useState<Car>();
+
+    useEffect(() => {
+        const fetchCarDetail = async () => {
+            const response = await axios.get('http://localhost:8080/car_show/car');
+            const cars : Car = response.data;
+            setCarDetail(cars);
+        }
+        fetchCarDetail();
+    }, []);
+
     return (
         <div className="card" style={{ width: '18rem' }}>
             {car.images.length > 0 && (
@@ -28,23 +43,11 @@ const CarDetails : React.FC<CarDetailsProps> = ({car}) => {
                     </div>
                 ))}
                 <Link href="/">
-                    <a className="btn btn-primary">Back to list</a>
+                    <p className="btn btn-primary">Back to list</p>
                 </Link>
             </div>
         </div>
     )
 }
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-    const { id } = context.params!;
-    const response = await axios.get(`http://localhost:8080/api/cars/${id}`);
-    const car: Car = response.data;
-
-    return {
-        props: {
-            car,
-        },
-    };
-};
 
 export default CarDetails;
