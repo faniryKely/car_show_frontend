@@ -42,12 +42,12 @@ export default function Links() {
 
   return (
     <div className={styles.container}>
-    {brands.map((link)=>(
-        <div key={link.name}>
-            <Link href={link.path} key={link.name}>{link.name}</Link>
-            <Image src={link.image} alt=""></Image>
-        </div>
-    ))}
-</div>
+      {brands.map((link)=>(
+          <div key={link.name}>
+              <Link href={link.path} key={link.name}>{link.name}</Link>
+              <Image src={link.image} alt=""></Image>
+          </div>
+      ))}
+    </div>
   );
 }

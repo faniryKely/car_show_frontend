@@ -36,7 +36,7 @@ const SignUpPage: React.FC = () => {
                 const errorData = response.data;
                 throw new Error(errorData.message || 'Erreur lors de l\'inscription');
             }
-            const data = await response.json();
+            const data = await response.data;
             localStorage.setItem('token', data.token);
             setSuccess('Inscription réussie ! Vous pouvez maintenant vous connecter.');
             window.location.href = '/login';

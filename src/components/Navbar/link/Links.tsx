@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link"
 import styles from "../navbar.module.css"
 
@@ -24,11 +25,15 @@ export default function Links(){
             path:"/carSearch"
         }
     ]
+
+    const redirection = (path: string) => {
+        window.location.href = path;
+    }
     return (
         <div className={styles.container}>
-            {links.map((link=>(
-                <Link href={link.path} key={link.title} className={styles.title}>{link.title}</Link>
-            )))}
+            {links.map((link) => (
+                <a key={link.title} className={styles.title} onClick={() => redirection(link.path)}>{link.title}</a>
+            ))}
         </div>
     )
 }
