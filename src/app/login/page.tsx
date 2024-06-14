@@ -61,7 +61,10 @@ const CustomLoginPage: React.FC = () => {
                         marginTop: 18,
                         display: 'flex',
                         flexDirection: 'column',
-                        alignItems: 'center'
+                        alignItems: 'center',
+                        backgroundColor: 'rgba(210, 210, 180, 0.8)', 
+                        padding: '40px',
+                        borderRadius: '15px'
                     }}
                 >
                     <Avatar sx={{ m: 1, bgcolor: '#A52A2A' }}>

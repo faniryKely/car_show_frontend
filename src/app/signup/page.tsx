@@ -9,6 +9,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Typography } from '@mui/material';
 import { Container } from '@mui/material';
 import Link from 'next/link';
+import '../login/login.css'
 import { ArrowBackIos as ArrowBackIosIcon } from '@mui/icons-material';
 import axios from 'axios';
 
@@ -51,13 +52,16 @@ const SignUpPage: React.FC = () => {
                 <CssBaseline />
                 <Box
                     sx={{
-                        marginTop: 8,
+                        marginTop: 18,
                         display: 'flex',
                         flexDirection: 'column',
-                        alignItems: 'center'
+                        alignItems: 'center',
+                        backgroundColor: 'rgba(210, 210, 180, 0.8)', 
+                        padding: '40px',
+                        borderRadius: '15px'
                     }}
                 >
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                    <Avatar sx={{ m: 1, bgcolor: '#A52A2A' }}>
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
@@ -124,7 +128,10 @@ const SignUpPage: React.FC = () => {
                             sx={{
                                 mt: 3,
                                 mb: 2,
-                                backgroundColor: 'rgba(126, 126, 129, 0.842)'
+                                backgroundColor: '#A52A2A',
+                                '&:hover': {
+                                    backgroundColor: '#B94A3B'
+                                }
                             }}
                         >
                             Sign Up
@@ -134,7 +141,10 @@ const SignUpPage: React.FC = () => {
                         variant="contained"
                         sx={{
                             width: '50%',
-                            backgroundColor: 'rgba(126, 126, 129, 0.842)'
+                            backgroundColor: '#A52A2A',
+                                '&:hover': {
+                                    backgroundColor: '#B94A3B'
+                             }
                         }}
                     >
                         <Link
@@ -150,7 +160,7 @@ const SignUpPage: React.FC = () => {
             <Box
                 sx={{
                     ml: 2,
-                    backgroundColor: 'rgba(126, 126, 129, 0.842)',
+                    backgroundColor: '#A52A2A',
                     borderRadius: '80%',
                     height: '45px',
                     width: '45px',

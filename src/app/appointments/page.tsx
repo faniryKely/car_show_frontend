@@ -87,12 +87,12 @@ const Appointments: React.FC = () => {
         <Grid className='appointment' container justifyContent="center" alignItems="center" style={{ height: '100vh' }}>
             <Box
                 sx={{
-                    width: '50%',
+                    width: '45%',
                     textAlign: 'center',
                     padding: '20px',
                     boxShadow: 3,
                     borderRadius: '5px',
-                    backgroundColor: '#fff',
+                    backgroundColor: 'rgba(204, 108, 0, 0.4)',
                 }}
             >
                 <Typography
@@ -121,7 +121,7 @@ const Appointments: React.FC = () => {
                         marginTop: '20px',
                     }}
                 >
-                    <Box sx={{ display: 'flex', flexDirection: 'row', gap: 5 }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'row', gap: 5, width: '25vw' }}>
                         <Controller
                             name="name"
                             control={control}
@@ -133,6 +133,7 @@ const Appointments: React.FC = () => {
                                     fullWidth
                                     error={!!errors.name}
                                     helperText={errors.name ? errors.name.message : ''}
+                                    sx={{ backgroundColor: '#fff', borderRadius: '8px' }}
                                 />
                             )}
                         />
@@ -147,11 +148,12 @@ const Appointments: React.FC = () => {
                                     fullWidth
                                     error={!!errors.firstName}
                                     helperText={errors.firstName ? errors.firstName.message : ''}
+                                    sx={{ backgroundColor: '#fff', borderRadius: '8px' }}
                                 />
                             )}
                         />
                     </Box>
-                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 5, width: '27.5vw' }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 5, width: '25vw' }}>
                         <Controller
                             name="email"
                             control={control}
@@ -163,6 +165,7 @@ const Appointments: React.FC = () => {
                                     fullWidth
                                     error={!!errors.email}
                                     helperText={errors.email ? errors.email.message : ''}
+                                    sx={{ backgroundColor: '#fff', borderRadius: '8px' }}
                                 />
                             )}
                         />
@@ -177,6 +180,7 @@ const Appointments: React.FC = () => {
                                     fullWidth
                                     error={!!errors.contact}
                                     helperText={errors.contact ? errors.contact.message : ''}
+                                    sx={{ backgroundColor: '#fff', borderRadius: '8px' }}
                                 />
                             )}
                         />
@@ -194,12 +198,12 @@ const Appointments: React.FC = () => {
                                 fullWidth
                                 error={!!errors.message}
                                 helperText={errors.message ? errors.message.message : ''}
-                                sx={{ marginTop: 2, marginBottom: 2, width: '27.5vw' }}
+                                sx={{ marginTop: 2, marginBottom: 2, width: '25vw', backgroundColor: '#fff', borderRadius: '8px' }}
                             />
                         )}
                     />
-                    <Box sx={{ width: '27.5vw', paddingBottom: '10vh' }}>
-                        <Typography>Appointment Date</Typography>
+                    <Box sx={{ width: '25vw', paddingBottom: '10vh' }}>
+                        <Typography sx={{ fontWeight: 'light', marginBottom: '10px', color: 'darkslategray' }}>Appointment Date</Typography>
                         <Controller
                             name="appointmentDate"
                             control={control}
@@ -207,7 +211,7 @@ const Appointments: React.FC = () => {
                                 <DatePicker
                                     selected={field.value}
                                     onChange={(date) => field.onChange(date)}
-                                    customInput={<TextField fullWidth variant="outlined" />}
+                                    customInput={<TextField fullWidth variant="outlined" sx={{ backgroundColor: '#fff', borderRadius: '8px' }} />}
                                 />
                             )}
                         />
@@ -226,11 +230,12 @@ const Appointments: React.FC = () => {
                         </Link>
                     </Box>
                 </Box>
-
             </Box>
         </Grid>
     );
 };
 
 export default Appointments;
+
+
 
