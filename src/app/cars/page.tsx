@@ -11,12 +11,6 @@ interface CardProps {
     cars : Car[];
 }
 
-<<<<<<< HEAD
-const CarCard: React.FC<CardProps> = ({ cars }) => {
-    if (!cars) {
-        return <div>No cars available</div>;
-    }
-=======
 const CarCard: React.FC<CardProps> = () => {
 
     const [cars, setCars] = useState<Car[]>([]);
@@ -30,7 +24,6 @@ const CarCard: React.FC<CardProps> = () => {
         fetchCars();
     }, []);
     
->>>>>>> 29d817606e29abbaedcd1b1415a172a8756aab5e
     return (
         <div>
             {cars.map((car) => (
