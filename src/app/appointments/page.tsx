@@ -1,5 +1,9 @@
+
+
 export default function Appointments(){
     return(
-        <p>Appointments</p>
+        <div>
+            <p>Appointments</p>
+        </div>
     )
 }

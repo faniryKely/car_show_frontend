@@ -7,27 +7,27 @@ export default function Links(){
     const brands = [
         {
             name: "Ford",
-            path: ""
+            path: "/CAR_SHOW_FRONTEND/public/ford-logo.png"
         },
         {
             name: "Mercedes",
-            path: ""
+            path: "/CAR_SHOW_FRONTEND/public/mercedes-benz-logo.png"
         },
         {
-            name: "Aston Martin",
-            path: ""
+            name: "Jaguar",
+            path: "/CAR_SHOW_FRONTEND/public/jaguar-logo.png"
         },
         {
             name: "Nissan",
-            path: ""
+            path: "/CAR_SHOW_FRONTEND/public/nissan-logo.png"
         },
         {
             name: "Porshe",
-            path: ""
+            path: "/CAR_SHOW_FRONTEND/public/porshe-logo.png"
         },
         {
-            name: "Mazda",
-            path: ""
+            name: "Toyota",
+            path: "/CAR_SHOW_FRONTEND/public/toyota-logo.png"
         }
 
     ]
