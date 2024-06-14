@@ -12,78 +12,15 @@ import CustomizeLoginPage from "../app/login/page";
 import { CreateBrand } from "./CreateBrand";
 import { BrandList } from "./BrandList";
 import authProvider from "../components/authprovider/useClientProvider";
-
-const httpClient = (url: string, options: { headers?: HeadersInit } = {}) => {
-    if (!options.headers) {
-        options.headers = new Headers({ Accept: 'application/json' });
-    }
-    return fetchUtils.fetchJson(url, options);
-};
-
-const apiUrl = 'http://localhost:8080';
-const dataProvider = jsonServerProvider(apiUrl, httpClient);
-
-const myDataProvider: DataProvider = {
-    ...dataProvider,
-    getOne: (resource, params) =>
-        dataProvider.getOne(resource, {
-            ...params,
-            id: `${params.id}`,
-        }),
-    getList: (resource, params) =>
-        dataProvider.getList(resource, params).then(response => ({
-            ...response,
-            data: response.data.map(record => ({
-                ...record,
-                id: record[`${resource}Id`] // Utilisez le nom de l'identifiant spécifique à la table
-            }))
-        })),
-    getMany: (resource, params) =>
-        dataProvider.getMany(resource, params).then(response => ({
-            ...response,
-            data: response.data.map(record => ({
-                ...record,
-                id: record[`${resource}Id`]
-            }))
-        })),
-    getManyReference: (resource, params) =>
-        dataProvider.getManyReference(resource, params).then(response => ({
-            ...response,
-            data: response.data.map(record => ({
-                ...record,
-                id: record[`${resource}Id`]
-            }))
-        })),
-    update: (resource, params) =>
-        dataProvider.update(resource, {
-            ...params,
-            id: params.data.id || params.id
-        }),
-    updateMany: (resource, params) =>
-        dataProvider.updateMany(resource, {
-            ...params,
-            ids: params.ids
-        }),
-    create: (resource, params) =>
-        dataProvider.create(resource, params),
-    delete: (resource, params) =>
-        dataProvider.delete(resource, {
-            ...params,
-            id: params.id
-        }),
-    deleteMany: (resource, params) =>
-        dataProvider.deleteMany(resource, {
-            ...params,
-            ids: params.ids
-        }),
-};
+import { UserEdit } from "./UserEdit";
+import { dataProvider } from "./dataProvider/dataProvider";
 
 const AdminApp = () => (
-    <Admin loginPage={CustomizeLoginPage} dataProvider={myDataProvider} authProvider={authProvider}>
+    <Admin loginPage={CustomizeLoginPage} dataProvider={dataProvider} authProvider={authProvider}>
         <Resource
             name="user"
             list={UserList}
-            edit={EditGuesser}
+            edit={UserEdit}
             create={Create}
             recordRepresentation={"email"}
         />

@@ -1,6 +1,6 @@
 import { Create, SimpleForm, TextInput, useNotify, useRedirect } from 'react-admin';
 import { useState } from 'react';
-import taunusImage from '../../public/ford-taunus.png';
+import taunusImage from '../../public/Assets/ford-taunus.png';
 import Image from 'next/image';
 
 export const CreateBrand = () => {

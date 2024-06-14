@@ -3,8 +3,8 @@
 import Link from "next/link";
 import styles from "../carShow.module.css";
 import Image from "next/image";
-import taunus from "../../../../public/ford-taunus.png";
-import mercedes from "../../../../public/mercedes-benz-300sl.jpg"
+import taunus from "../../../../public/Assets/ford-taunus.png";
+import mercedes from "../../../../public/Assets/mercedes-benz-300sl.jpg"
 import porshe from "../../../../public/porshe-911-turbo.jpg"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect } from "react";
@@ -16,32 +16,32 @@ export default function Links() {
     {
       name: "Ford Taunus",
       image: taunus,
-      path: "/CAR_SHOW_FRONTEND/public/ford-taunus.png",
+      path: "/CAR_SHOW_FRONTEND/public/Assets/ford-taunus.png",
     },
     {
       name: "Mercedes",
       image: mercedes,
-      path: "/CAR_SHOW_FRONTEND/public/mercedes-benz-300sl.jpg",
+      path: "/CAR_SHOW_FRONTEND/public/Assets/mercedes-benz-300sl.jpg",
     },
     {
       name: "Aston Martin",
       image: taunus,
-      path: "/CAR_SHOW_FRONTEND/public/ford-taunus.png",
+      path: "/CAR_SHOW_FRONTEND/public/Assets/ford-taunus.png",
     },
     {
       name: "Nissan",
       image: taunus,
-      path: "/CAR_SHOW_FRONTEND/public/ford-taunus.png",
+      path: "/CAR_SHOW_FRONTEND/public/Assets/ford-taunus.png",
     },
     {
       name: "Porsche",
       image: porshe,
-      path: "/CAR_SHOW_FRONTEND/public/porshe-911-turbo.jpg",
+      path: "/CAR_SHOW_FRONTEND/public/Assets/porshe-911-turbo.jpg",
     },
     {
       name: "Mazda",
       image: taunus,
-      path: "/CAR_SHOW_FRONTEND/public/ford-taunus.png",
+      path: "/CAR_SHOW_FRONTEND/public/Assets/ford-taunus.png",
     },
   ];
 

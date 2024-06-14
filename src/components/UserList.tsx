@@ -7,9 +7,11 @@ export const UserList = () => (
         filters={[<SearchInput key="searchInput" source="search" alwaysOn/>]}
     >
         <Datagrid rowClick="edit">
-            <TextField source="name"/>
-            <TextField source="email"/>
-            <TextField source="isActive"/>
+            <TextField source="id" />
+            <TextField source="name" />
+            <TextField source="email" />
+            <TextField source="password" />
+            <TextField source="role.roleName" />
         </Datagrid>
     </List>
 );
