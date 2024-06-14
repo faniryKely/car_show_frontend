@@ -1,7 +1,7 @@
 import React from "react";
 import { Datagrid, List, SearchInput, TextField } from "react-admin";
 
-export const AppointmentList = () => (
+const AppointmentList = () => (
     <List 
         title="Appointments List"
         sort={ {field: "appointmentDate", order: "ASC"} }
@@ -21,3 +21,4 @@ export const AppointmentList = () => (
         </Datagrid>
     </List>
 );
+export default AppointmentList;
