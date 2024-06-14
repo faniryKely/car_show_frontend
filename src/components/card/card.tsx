@@ -1,19 +1,45 @@
+import axios from 'axios';
 import Image from 'next/image';
-        import Link from 'next/link';
+import Link from 'next/link';
+import {Car} from "@/components/Interface"
+import { GetServerSideProps } from 'next';
 
-export default function Card(){     
-            return (
-                <div>
-                    <div className="card" style={{ width: '18rem' }}>
-                        <Image src="/path/to/image.jpg" className="card-img-top" alt="Image description" width={288} height={162} />
-                        <div className="card-body">
-                            <h5 className="card-title">Card title</h5>
-                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <Link href="#">
-                                <a className="btn btn-primary">Learn more</a>
-                            </Link>
-                        </div>
+interface CardProps {
+    cars : Car[];
+}
+
+const Card: React.FC<CardProps> = ({ cars }) => {
+    return (
+        <div>
+            {cars.map((car) => (
+                <div key={car.carTypeId} className="card" style={{ width: '18rem' }}>
+                    {car.images.length > 0 && (
+                        <Image src={car.images[0].url} className="card-img-top" alt={car.name} width={288} height={162} />
+                    )}
+                    <div className="card-body">
+                        <h5 className="card-title">{car.name}</h5>
+                        <p className="card-text">Model: {car.model}</p>
+                        <p className="card-text">Price: ${car.price}</p>
+                        <Link href={`/cars/${car.carTypeId}`}>
+                            <a className="btn btn-primary">View Details</a>
+                        </Link>
                     </div>
                 </div>
-            )
+            ))}
+        </div>
+    );
+};
+
+export const getServersideProps: GetServerSideProps = async () => {
+    const response = await axios.get('http://localhost:8080/api/cars');
+    const cars : Car[] = response.data; 
+
+    return{
+        props: {
+            cars,
+        },
+    }
 }
+
+export default Card;
+
