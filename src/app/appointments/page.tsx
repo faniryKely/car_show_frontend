@@ -1,18 +1,24 @@
 "use client"
-import { Typography, Box, Grid,  TextField, Button } from '@mui/material'
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import { Typography, Box, Grid,  TextField, Button, IconButton } from '@mui/material'
 import React, { useState } from 'react';
 import './appointment.css'
+import Link from 'next/link';
+import { TextFieldProps } from '@mui/material';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css"; 
 
 export default function Appointments(){
-    const [date, setDate] = useState(new Date());
-    const [emailError, setEmailError] = useState<Boolean>(false);
+    const [appointmentDate, setAppointmentDate] = useState(new Date());
+    const [email, setEmail] = useState<String> ('')
+    const [emailError, setEmailError] = useState<boolean>(false);
 
     const handleEmailError = (event : React.ChangeEvent<HTMLInputElement>) => {
         const email = event.target.value;
+        setEmail(email)
         setEmailError(email.trim() === '' || !email.includes('@'));
+    }
+    const handleSubmit = () => {
+        
     }
     return( 
        <>
@@ -58,23 +64,50 @@ export default function Appointments(){
                             <TextField label="Name" variant="outlined" fullWidth />
                             <TextField label="First Name" variant="outlined" fullWidth />
                         </Box>
-                        <Box sx={{ display: 'flex', flexDirection: 'row', gap: 5 }}>
-                            <TextField label="Email" variant="outlined" fullWidth />
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 5, width: '27.5vw'}}>
+                            <TextField 
+                            label="Email"
+                            value={email}
+                            onChange={handleEmailError}
+                            error={emailError}
+                            helperText={emailError ? 'Please enter a valid email address' : ''}
+                            variant="outlined" 
+                            fullWidth 
+                            />
                             <TextField label="Contact" variant="outlined" fullWidth />
-                        </Box>
+                        </Box> 
+                       
                         <TextField
                             label="Message"
                             variant="outlined"
                             multiline
-                            rows={6} // Augmenter le nombre de lignes pour le champ Message
+                            rows={3} // Augmenter le nombre de lignes pour le champ Message
                             
-                            sx={{ marginTop: 2, marginBottom: 2 , width: '28vw'}} // Espacement supplémentaire au-dessus et en dessous du champ
+                            sx={{ marginTop: 2, marginBottom: 2 , width: '27.5vw'}} // Espacement supplémentaire au-dessus et en dessous du champ
                         />
-                        <Button variant="contained" color="primary" type="submit">
-                            Submit
-                        </Button>
+                         <Box sx={{ width: '27.5vw', paddingBottom: '10vh'}}>
+                             <Typography>Appointment Date</Typography>
+                                 <DatePicker selected={appointmentDate} onChange={(date) => date && setAppointmentDate(date)}>
+                            </DatePicker>
+                        </Box>
+                         
+                        <Box sx={{ display: 'flex',
+                                    flexDirection: 'row',
+                                    gap : 5
+                        }}>
+                            <Button variant="contained" color="primary" type="submit">
+                                Submit
+                            </Button>
+                            <Link href="/">
+                                <Button variant="contained" color="primary" type="submit">
+                                    Home
+                                </Button>
+                            </Link>
+
+                        </Box>  
                     </Box>
                 </Box>
+                
             </Grid>
        </>
     )
