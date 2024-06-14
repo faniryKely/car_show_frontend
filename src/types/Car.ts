@@ -13,7 +13,7 @@ export type Car = {
     placeNumber: number;
     status: boolean;
     images: Images[];
-    brand: Brand | null;
-    carType: CarType| null;
-    motorType: MotorType | null;
+    brand: Brand 
+    carType: CarType
+    motorType: MotorType 
 };
