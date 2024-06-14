@@ -1,15 +1,4 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-
-
-import Home from "./page";
-import Homes from "./page";
-
-
-
-import LandingPage from "@/components/landingPage/LandingPage";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Rasseta",
@@ -23,7 +12,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <div className="container">
           
           {children}

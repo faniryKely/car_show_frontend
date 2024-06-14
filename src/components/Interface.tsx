@@ -5,7 +5,7 @@ export interface Image{
 }
 
 export interface Car{
-    carTypeId : number;
+    carId : number;
     name : string;
     model : string;
     price : number;
@@ -14,7 +14,7 @@ export interface Car{
     placeNumber : number;
     status : boolean
     brand : { id: number, name : string};
-    carType : { id : number, type : string};
-    motorType : { id: number, type : string};
+    carType : { id : number, name : string};
+    motorType : { id: number, name : string};
     images : Image[];
 }
