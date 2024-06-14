@@ -9,6 +9,9 @@ interface CardProps {
 }
 
 const CarCard: React.FC<CardProps> = ({ cars }) => {
+    if (!cars) {
+        return <div>No cars available</div>;
+    }
     return (
         <div>
             {cars.map((car) => (
