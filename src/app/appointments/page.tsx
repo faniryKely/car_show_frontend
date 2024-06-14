@@ -38,6 +38,26 @@ const Appointments: React.FC = () => {
         },
     });
 
+    // send email function
+    const sendEmail = async (data: FormData) => {
+        try {
+            const emailResponse = await axios.post('http://localhost:8080/sendEmail', {
+                to: data.email,
+                subject: "Appointment Confirmation",
+                body: `Dear ${data.name},\n\nYour appointment is confirmed for ${formatDateToLocalDate(data.appointmentDate)}.\n\nBest regards,\nYour Company`,
+            });
+
+            if (emailResponse.status !== 200) {
+                throw new Error('Failed to send email');
+            }
+
+            console.log('Email sent successfully');
+        } catch (error) {
+            console.error('Error sending email: ', error);
+        }
+    };
+
+    
     function formatDateToLocalDate(date: Date) {
         const year = date.getFullYear();
         const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -68,7 +88,7 @@ const Appointments: React.FC = () => {
 
             console.log(formatDateToLocalDate(data.appointmentDate));
             
-            if(!response.status === 200) {
+            if (response.status !== 200) {
                 throw new Error('Network response was not ok');
             }
             
